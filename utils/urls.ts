@@ -1,7 +1,7 @@
 const prod = process.env.NODE_ENV === "production";
 
 export default {
-    baseUrl: prod ? "http://localhost:3000" : "http://localhost:3000",
+    baseUrl: prod ? "https://mindversity-kfidan-test-deployment.vercel.app/" : "http://localhost:3000",
     dbUrl: process.env.MONGO_DB ?? "mongodb://localhost:27017",
     pages: {
         index: "/",
