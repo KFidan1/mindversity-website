@@ -1,3 +1,12 @@
+import globals from "utils/globals";
+
+
+declare global {
+  interface Window {
+    gtag :any;
+  }
+}
+
 /**
  * Takes in coordinates and returns the US region
  * @param latitude
@@ -17,3 +26,20 @@ export function getRegion(latitude: number, longitude: number): string {
 
     return "unknown";
 }
+
+// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
+export const pageview = (url :any) => {
+    window.gtag('config', globals.ga_tracking_id, {
+      page_path: url,
+    })
+  }
+  
+  // https://developers.google.com/analytics/devguides/collection/gtagjs/events
+  export const event = ({ action, category, label, value } :any) => {
+    window.gtag('event', action, {
+      event_category: category,
+      event_label: label,
+      value: value,
+    })
+  }
+  
